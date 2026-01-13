@@ -62,3 +62,4 @@ def logout_get():
     session.pop('username', None)
     flash('Logout successful', 'success')
     return redirect(url_for('auth.login_get'))
+

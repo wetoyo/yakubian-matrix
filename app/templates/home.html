@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 min-h-screen">
+    <nav class="bg-white shadow mb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                        {% if session.get('username') %}
+                        <a href="{{ url_for('disp_homepage') }}"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Home
+                        </a>
+                        <a href="{{ url_for('disp_farm') }}"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Farm
+                        </a>
+                        <a href="{{ url_for('auth.logout_get') }}"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Logout
+                        </a>
+                        {% else %}
+                        <a href="{{ url_for('auth.login_get') }}"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Login
+                        </a>
+                        <a href="{{ url_for('auth.signup_get') }}"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Signup
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+                {% if session.get('username') %}
+                <div class="flex items-center">
+                    <span class="text-sm text-gray-500">{{ session['username'] }}</span>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <div class="mb-6 space-y-4">
+            {% for category, message in messages %}
+            <div
+                class="p-4 rounded-md {{ 'bg-red-50 text-red-700' if category == 'error' else 'bg-green-50 text-green-700' }}">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+
+        <div class="bg-white shadow rounded-lg p-6">
+            <h1 class="text-3xl font-bold text-gray-900 mb-4">home</h1>
+            <p class="text-gray-600 mb-6">{{ username }}!</p>
+            <a href="{{ url_for('disp_farm') }}"
+                class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                to farm
+            </a>
+        </div>
+    </div>
+</body>
+
+</html>
