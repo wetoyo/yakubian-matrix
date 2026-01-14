@@ -19,9 +19,16 @@ async function fetchCrops() {
       `https://quickstats.nass.usda.gov/api/get_param_values/?key=${API_KEY}&param=commodity_desc`
     );
 
-    if (!res.ok) {
-      throw new Error(`Failed to fetch: ${res.status} ${res.statusText}`);
-    }
+  const data = await res.json();
+  const filtered = data.commodity_desc
+    .filter(name => !name.includes('ANIMAL') &&
+                 !name.includes('OPERATOR') &&
+                 !name.includes('LABOR') &&
+                 !name.includes('FARM OPERATIONS') &&
+                 !name.includes('AG LAND') &&
+                 !name.includes('INCOME'))
+    .sort(() => Math.random() - 0.5)
+    .slice(0, 20);
 
     const data = await res.json();
 
