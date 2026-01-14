@@ -16,7 +16,7 @@ async function fetchCrops() {
                  !name.includes('AG LAND') &&
                  !name.includes('INCOME'))
     .sort(() => Math.random() - 0.5)
-    .slice(0, 50);
+    .slice(0, 20);
 
   const crops = filtered.map((name, idx) => [idx + 1, name, Math.floor(Math.random() * 5) + 1, 'USDA_NASS']);
 
