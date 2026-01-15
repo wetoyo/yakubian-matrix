@@ -94,9 +94,7 @@
                         class="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-amber-200 to-green-200 rounded-full mb-6 border-4 border-white shadow-xl">
                         <span class="text-5xl">🏡</span>
                     </div>
-                    <h1 class="text-5xl font-bold text-amber-900 mb-3 font-serif">Welcome Home</h1>
-                    <p class="text-amber-800 text-xl font-medium">Ready for another day on the farm, <span
-                            class="text-green-600 font-bold font-serif">{{ username }}</span>?</p>
+                    <h1 class="text-5xl font-bold text-amber-900 mb-3 font-serif">Welcome {{ username }}! </h1>
 
                     <div class="mt-4 flex justify-center space-x-2">
                         · · ────── ꒰ঌ·✦·໒꒱ ────── · ·
@@ -108,12 +106,11 @@
                     <div class="h-3 bg-gradient-to-r from-green-600 via-emerald-500 to-amber-500 relative"></div>
 
                     <div class="p-10 text-center">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                            <div class="space-y-6">
-                                <h2 class="text-2xl font-bold text-amber-900 text-left">Your Harvest Awaits</h2>
-                                <p class="text-amber-700 text-left leading-relaxed">
-                                    The sun is up, the soil is rich, and your crops are growing. Head over to the farm
-                                    to manage your plants and upgrade your tools.
+                       <div class="flex flex-col items-center">
+                            <div class="space-y-6 text-center">
+                                <h2 class=" text-2xl font-bold text-amber-900">Grow a Garden!</h2>
+                                <p class="text-amber-700 text-left">
+                                    Head to the fields boy!
                                 </p>
                                 <div class="flex pt-4">
                                     <a href="{{ url_for('disp_farm') }}"
@@ -121,29 +118,6 @@
                                         ☆
                                         Go to Farm
                                     </a>
-                                </div>
-                            </div>
-                            <div class="hidden md:block">
-                                <div
-                                    class="bg-gradient-to-br from-amber-50 to-green-50 rounded-2xl p-6 border-2 border-dashed border-amber-200">
-                                    <div class="grid grid-cols-2 gap-4">
-                                        <div class="flex flex-col items-center p-4 bg-white rounded-xl shadow-sm">
-                                            <span class="text-3xl mb-2">🌽</span>
-                                            <span class="text-xs font-bold text-amber-800">CORN</span>
-                                        </div>
-                                        <div class="flex flex-col items-center p-4 bg-white rounded-xl shadow-sm">
-                                            <span class="text-3xl mb-2">🍓</span>
-                                            <span class="text-xs font-bold text-amber-800">BERRY</span>
-                                        </div>
-                                        <div class="flex flex-col items-center p-4 bg-white rounded-xl shadow-sm">
-                                            <span class="text-3xl mb-2">🌻</span>
-                                            <span class="text-xs font-bold text-amber-800">FLOWER</span>
-                                        </div>
-                                        <div class="flex flex-col items-center p-4 bg-white rounded-xl shadow-sm">
-                                            <span class="text-3xl mb-2">🎃</span>
-                                            <span class="text-xs font-bold text-amber-800">PUMPKIN</span>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
