@@ -185,3 +185,53 @@ function handleHarvest(id, index) {
     updateMoneyDisplay()
     renderFarmRows()
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    money = 20
+    updateMoneyDisplay()
+
+    renderShop()
+    renderFarmRows()
+
+    setInterval(tickGrowth, 500)
+
+    const upgradeBtn = document.getElementById('upgradeBtn')
+    const upgradeModal = document.getElementById('upgradeModal')
+    const closeUpgrade = document.getElementById('closeUpgrade')
+    const buyFert = document.getElementById('buyFert')
+    const fertLevel = document.getElementById('fertLevel')
+
+    if (upgradeBtn) {
+        upgradeBtn.addEventListener('click', () => {
+            upgradeModal.classList.remove('hidden')
+        })
+    }
+
+    if (closeUpgrade) {
+        closeUpgrade.addEventListener('click', () => {
+            upgradeModal.classList.add('hidden')
+        })
+    }
+
+    if (buyFert) {
+        buyFert.addEventListener('click', () => {
+            const cost = 50 + state.upgrades.fertilizer * 25
+
+            if (money < cost) {
+                flashMessage('Not enough money for fertilizer')
+                return
+            }
+
+            money -= cost
+            state.upgrades.fertilizer++
+            fertLevel.textContent = state.upgrades.fertilizer
+            updateMoneyDisplay()
+        })
+    }
+
+    document.addEventListener('keydown', e => {
+        if (e.key.toLowerCase() === 'u') {
+            upgradeModal.classList.toggle('hidden')
+        }
+    })
+})
