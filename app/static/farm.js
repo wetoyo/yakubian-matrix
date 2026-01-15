@@ -107,3 +107,81 @@ function addPlantInstance(id) {
         startTime: null
     })
 }
+
+function renderFarmRows() {
+    const farm = document.getElementById('farmRows')
+    if (!farm) return
+
+    farm.innerHTML = ''
+
+    PLANTS.forEach(plant => {
+        const row = document.createElement('div')
+        row.className = 'p-3 border rounded bg-white'
+
+        row.innerHTML = `
+            <div class="flex items-center mb-2">
+                <div class="w-40 font-medium">${plant.emoji} ${plant.name}</div>
+                <div class="text-sm text-gray-500">Click the plants to harvest.</div>
+            </div>
+        `
+
+        const slots = document.createElement('div')
+        slots.className = 'flex flex-wrap gap-2'
+
+        const instances = state.plantSlots[plant.id]
+
+        if (instances.length === 0) {
+            const empty = document.createElement('div')
+            empty.className = 'text-sm text-gray-400'
+            empty.textContent = 'No plants yet — buy some from the shop.'
+            slots.appendChild(empty)
+        } else {
+            instances.forEach((inst, index) => {
+                const tile = document.createElement('div')
+                tile.className = 'w-24 h-24 flex flex-col items-center justify-center rounded border bg-green-50 relative cursor-pointer select-none'
+
+                if (!inst.ready) tile.classList.add('opacity-60')
+
+                tile.innerHTML = `
+                    <div class="text-2xl">${plant.emoji}</div>
+                    <div class="text-sm mt-1 font-semibold">
+                        ${inst.ready ? fmt(plant.clickValue) : 'growing'}
+                    </div>
+                    <div class="absolute bottom-0 left-0 h-1 bg-gray-200 w-full">
+                        <div class="bg-green-400 h-1" style="width:${inst.progress * 100}%"></div>
+                    </div>
+                `
+
+                tile.addEventListener('click', () => {
+                    handleHarvest(plant.id, index)
+                })
+
+                slots.appendChild(tile)
+            })
+        }
+
+        row.appendChild(slots)
+        farm.appendChild(row)
+    })
+}
+
+function handleHarvest(id, index) {
+    const plant = PLANTS.find(p => p.id === id)
+    const inst = state.plantSlots[id][index]
+    if (!plant || !inst) return
+
+    if (!inst.ready) {
+        flashMessage('Plant is still growing')
+        return
+    }
+
+    const bonus = 1 + state.upgrades.fertilizer * 0.1
+    money += plant.clickValue * bonus
+
+    inst.ready = false
+    inst.progress = 0
+    inst.startTime = Date.now()
+
+    updateMoneyDisplay()
+    renderFarmRows()
+}
