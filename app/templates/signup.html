@@ -17,8 +17,11 @@
             }
         }
 
-        .floating-icon {
-            animation: float 3s ease-in-out infinite alternate;
+        .floating {
+        animation: float 3s;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
         }
     </style>
 </head>
@@ -32,33 +35,32 @@
                         {% if session.get('username') %}
                         <a href="{{ url_for('disp_homepage') }}"
                             class="border-transparent text-amber-100 hover:text-white hover:border-amber-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors duration-200">
-                            <span class="mr-2">🏡</span> Home
+                                                              🏠︎ Home
                         </a>
                         <a href="{{ url_for('disp_farm') }}"
                             class="border-transparent text-amber-100 hover:text-white hover:border-amber-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors duration-200">
-                            <span class="mr-2">🌾</span> Farm
+                           ◆ Farm
                         </a>
                         <a href="{{ url_for('auth.logout_get') }}"
                             class="border-transparent text-amber-100 hover:text-white hover:border-amber-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors duration-200">
-                            <span class="mr-2">👋</span> Logout
+                            ◆ Logout
                         </a>
                         {% else %}
                         <a href="{{ url_for('auth.login_get') }}"
                             class="border-transparent text-amber-100 hover:text-white hover:border-amber-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors duration-200">
-                            <span class="mr-2">🚜</span> Login
+                           ◆ Login
                         </a>
                         <a href="{{ url_for('auth.signup_get') }}"
                             class="border-amber-300 text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
-                            <span class="mr-2">🌱</span> Signup
+                            ◆ Signup
                         </a>
                         {% endif %}
                     </div>
                 </div>
                 {% if session.get('username') %}
                 <div class="flex items-center">
-                    <div class="flex items-center bg-amber-700/30 px-4 py-2 rounded-full border border-amber-600/30">
+                    <div class="flex items-center bg-amber-700/30 px-4 py-2 rounded-full border border-amber-600/30"> 👤
                         <span class="text-sm text-amber-100 font-medium">{{ session['username'] }}</span>
-                        <span class="ml-2 text-amber-200">👨‍🌾</span>
                     </div>
                 </div>
                 {% endif %}
@@ -88,16 +90,12 @@
                 <div class="text-center mb-10 relative">
                     <div
                         class="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-amber-200 to-green-200 rounded-full mb-6 border-4 border-white shadow-xl">
-                        <span class="text-5xl floating-icon">🌱</span>
+                        <span class="text-5xl">🌱</span>
                     </div>
                     <h1 class="text-4xl font-bold text-amber-900 mb-3 font-serif">Join the Farm</h1>
 
                     <div class="mt-4 flex justify-center space-x-2">
-                        <span class="text-xl">🌾</span>
-                        <span class="text-xl">🍎</span>
-                        <span class="text-xl">🥕</span>
-                        <span class="text-xl">🥛</span>
-                        <span class="text-xl">🍯</span>
+                        · · ────── ꒰ঌ·✦·໒꒱ ────── · ·
                     </div>
                 </div>
 
@@ -115,7 +113,7 @@
                                 <div class="relative field-container">
                                     <div
                                         class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none field-icon">
-                                        <span class="text-2xl text-amber-500">👨‍🌾</span>
+                                        <span class="text-2xl">👤</span>
                                     </div>
                                     <input type="text" id="username" name="username" required
                                         class="pl-12 appearance-none block w-full px-2 py-2 border-2 border-amber-200 rounded-xl shadow-sm placeholder-amber-400 focus:outline-none focus:ring-3 focus:ring-amber-500/30 focus:border-amber-500 text-amber-900 bg-amber-50/70 text-lg"
@@ -131,7 +129,7 @@
                                 <div class="relative field-container">
                                     <div
                                         class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none field-icon">
-                                        <span class="text-2xl text-amber-500">🗝️</span>
+                                        <span class="text-2xl">🔓</span>
                                     </div>
                                     <input type="password" id="password" name="password" required
                                         class="pl-12 appearance-none block w-full px-2 py-2 border-2 border-amber-200 rounded-xl shadow-sm placeholder-amber-400 focus:outline-none focus:ring-3 focus:ring-amber-500/30 focus:border-amber-500 text-amber-900 bg-amber-50/70 text-lg"
@@ -147,7 +145,7 @@
                                 <div class="relative field-container">
                                     <div
                                         class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none field-icon">
-                                        <span class="text-2xl text-amber-500">🔄</span>
+                                        <span class="text-2xl">🔓</span>
                                     </div>
                                     <input type="password" id="confirm" name="confirm" required
                                         class="pl-12 appearance-none block w-full px-2 py-2 border-2 border-amber-200 rounded-xl shadow-sm placeholder-amber-400 focus:outline-none focus:ring-3 focus:ring-amber-500/30 focus:border-amber-500 text-amber-900 bg-amber-50/70 text-lg"
@@ -158,7 +156,6 @@
                             <div>
                                 <button type="submit"
                                     class="group w-full flex justify-center items-center py-2 px-4 border border-transparent rounded-xl shadow-lg text-xl font-bold text-white bg-gradient-to-r from-green-600 via-emerald-500 to-amber-500 hover:from-green-700 hover:via-emerald-600 hover:to-amber-600 focus:outline-none focus:ring-3 focus:ring-offset-2 focus:ring-amber-500 transition-all duration-300 transform hover:-translate-y-1 active:translate-y-0">
-                                    <span class="mr-3 text-2xl">🌱</span>
                                     Start Farming →
                                 </button>
                             </div>
@@ -179,11 +176,10 @@
                 </div>
 
                 <div class="flex justify-center space-x-4 mt-6 text-2xl opacity-80">
-                    <span class="floating-icon" style="animation-delay: 0s;">🐄</span>
-                    <span class="floating-icon" style="animation-delay: 0.2s;">🐖</span>
-                    <span class="floating-icon" style="animation-delay: 0.4s;">🐑</span>
-                    <span class="floating-icon" style="animation-delay: 0.6s;">🐔</span>
-                    <span class="floating-icon" style="animation-delay: 0.8s;">🐝</span>
+                    <span class="floating" style="animation-delay: 0s;">🌻</span>
+                    <span class="floating" style="animation-delay: 0.2s;">🌾</span>
+                    <span class="floating" style="animation-delay: 0.4s;">🚜</span>
+                    <span class="floating" style="animation-delay: 0.6s;">🌅</span>
                 </div>
                 <div class="h-20"></div>
             </div>
