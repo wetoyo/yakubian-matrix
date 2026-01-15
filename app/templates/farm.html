@@ -55,24 +55,24 @@
                         {% if session.get('username') %}
                         <a href="{{ url_for('disp_homepage') }}"
                             class="border-transparent text-amber-100 hover:text-white hover:border-amber-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors duration-200">
-                            <span class="mr-2">🏡</span> Home
+                            🏡 Home
                         </a>
                         <a href="{{ url_for('disp_farm') }}"
                             class="border-amber-300 text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
-                            <span class="mr-2">🌾</span> Farm
+                            🌾 Farm
                         </a>
                         <a href="{{ url_for('auth.logout_get') }}"
                             class="border-transparent text-amber-100 hover:text-white hover:border-amber-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors duration-200">
-                            <span class="mr-2">👋</span> Logout
+                           🗝️ Logout
                         </a>
                         {% else %}
                         <a href="{{ url_for('auth.login_get') }}"
                             class="border-transparent text-amber-100 hover:text-white hover:border-amber-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors duration-200">
-                            <span class="mr-2">🚜</span> Login
+                            🚜 Login
                         </a>
                         <a href="{{ url_for('auth.signup_get') }}"
                             class="border-transparent text-amber-100 hover:text-white hover:border-amber-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors duration-200">
-                            <span class="mr-2">🌱</span> Signup
+                            🌱 Signup
                         </a>
                         {% endif %}
                     </div>
@@ -96,7 +96,7 @@
             {% for category, message in messages %}
             <div
                 class="p-4 rounded-xl border-l-4 {{ 'bg-red-50 text-red-800 border-red-500' if category == 'error' else 'bg-green-50 text-green-800 border-green-500' }} flex items-start shadow-lg">
-                <p class="mt-1">{{ message }}</p>
+                <p >{{ message }}</p>
                 <button onclick="this.parentElement.remove()" class="ml-auto text-gray-500 hover:text-gray-700">
                     <span class="text-xl">×</span>
                 </button>
