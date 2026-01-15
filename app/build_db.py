@@ -11,10 +11,18 @@ cursor = db.cursor()
 
 cursor.executescript(
     """
+    DROP TABLE IF EXISTS progress;
     DROP TABLE IF EXISTS users;
     CREATE TABLE users (
-    username TEXT PRIMARY KEY,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT UNIQUE,
     password TEXT
+    );
+    CREATE TABLE progress (
+    user_id INTEGER PRIMARY KEY,
+    money INTEGER DEFAULT 0,
+    game_state TEXT,
+    FOREIGN KEY (user_id) REFERENCES users(id)
     );
     """
 )
@@ -23,27 +31,28 @@ cursor.executescript(
     """
     DROP TABLE IF EXISTS crops;
     CREATE TABLE crops (
-    id INTEGER PRIMARY KEY,
+    id TEXT PRIMARY KEY,
     name TEXT,
-    growth_time INTEGER,
-    progress INTEGER,
-    yield INTEGER,
-    season TEXT
+    cost INTEGER,
+    click_value INTEGER,
+    growth INTEGER,
+    emoji TEXT
     );
     """
 )
 
 cursor.executescript(
     """
-    DROP TABLE IF EXISTS tools;
-    CREATE TABLE tools (
-    id TEXT UNIQUE,
-    name TEXT,
-    effect INTEGER,
-    cost INTEGER
-    );
+    INSERT INTO crops (id, name, cost, click_value, growth, emoji) VALUES 
+    ('carrot', 'Carrot', 5, 1, 3, '🥕'),
+    ('potato', 'Potato', 10, 2, 4, '🥔'),
+    ('tomato', 'Tomato', 25, 5, 6, '🍅'),
+    ('wheat', 'Wheat', 100, 20, 12, '🌾'),
+    ('pumpkin', 'Pumpkin', 500, 120, 30, '🎃'),
+    ('corn', 'Corn', 2000, 500, 60, '🌽');
     """
 )
 
 db.commit()
 db.close()
+

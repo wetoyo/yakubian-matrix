@@ -32,24 +32,24 @@
                         {% if session.get('username') %}
                         <a href="{{ url_for('disp_homepage') }}"
                             class="border-transparent text-amber-100 hover:text-white hover:border-amber-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors duration-200">
-                            🏡 Home
+                            <span class="mr-2">🏡</span> Home
                         </a>
                         <a href="{{ url_for('disp_farm') }}"
                             class="border-transparent text-amber-100 hover:text-white hover:border-amber-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors duration-200">
-                            🌾 Farm
+                            <span class="mr-2">🌾</span> Farm
                         </a>
                         <a href="{{ url_for('auth.logout_get') }}"
                             class="border-transparent text-amber-100 hover:text-white hover:border-amber-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors duration-200">
-                            🗝️ Logout
+                            <span class="mr-2">👋</span> Logout
                         </a>
                         {% else %}
                         <a href="{{ url_for('auth.login_get') }}"
                             class="border-transparent text-amber-100 hover:text-white hover:border-amber-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors duration-200">
-                            🚜 Login
+                            <span class="mr-2">🚜</span> Login
                         </a>
                         <a href="{{ url_for('auth.signup_get') }}"
                             class="border-amber-300 text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
-                            🌱 Signup
+                            <span class="mr-2">🌱</span> Signup
                         </a>
                         {% endif %}
                     </div>
@@ -93,7 +93,11 @@
                     <h1 class="text-4xl font-bold text-amber-900 mb-3 font-serif">Join the Farm</h1>
 
                     <div class="mt-4 flex justify-center space-x-2">
-                        <span class="text-xl">🌻 🌱 🌾 🌽 🚜</span>
+                        <span class="text-xl">🌾</span>
+                        <span class="text-xl">🍎</span>
+                        <span class="text-xl">🥕</span>
+                        <span class="text-xl">🥛</span>
+                        <span class="text-xl">🍯</span>
                     </div>
                 </div>
 

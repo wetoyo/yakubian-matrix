@@ -29,6 +29,8 @@ def signup_post():
         return redirect(url_for('auth.signup_get'))
     hashword = generate_password_hash(password)
     c.execute("insert into users (username, password) values (?, ?)", (username, hashword))
+    user_id = c.lastrowid
+    c.execute("insert into progress (user_id, money, game_state) values (?, ?, ?)", (user_id, 20, '{}'))
     db.commit()
     db.close()
     return redirect(url_for('auth.login_get'))
@@ -43,12 +45,13 @@ def login_post():
     password = request.form.get('password')
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
-    c.execute("select password from users where username = ?", (username,))
+    c.execute("select id, password from users where username = ?", (username,))
     user_data = c.fetchone()
     if(user_data):
-        hashword = user_data[0]
+        uid, hashword = user_data
         if(check_password_hash(hashword, password)):
             session["username"] = username
+            session["user_id"] = uid
             return redirect(url_for('disp_homepage'))
         else:
             flash('Invalid password', 'error')
