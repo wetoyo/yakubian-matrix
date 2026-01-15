@@ -160,7 +160,7 @@ function sickleHarvestAll() {
 
 function startSickleInterval() {
     if (state.upgrades.sickle) {
-        setInterval(sickleHarvestAll, 30000); // Every 30 seconds
+        setInterval(sickleHarvestAll, 10000); // Every 30 seconds
     }
 }
 
@@ -251,8 +251,8 @@ function updateUpgradeUI() {
     if (fertCost) fertCost.textContent = fmt(50 + state.upgrades.fertilizer * 25);
     if (canLevel) canLevel.textContent = state.upgrades.wateringCan;
     if (canCost) canCost.textContent = fmt(100 + state.upgrades.wateringCan * 50);
-    if (sickleStatus) sickleStatus.textContent = state.upgrades.sickle ? 'OWNED' : 'NOT OWNED';
-    if (sickleCost) sickleCost.textContent = fmt(75);
+    if (sickleStatus) sickleStatus.textContent = state.upgrades.sickle;
+    if (sickleCost) sickleCost.textContent = state.upgrades.sickle ? 'OWNED' : fmt(75);
 }
 
 // Initialization
