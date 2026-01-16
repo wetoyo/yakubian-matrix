@@ -7,22 +7,22 @@ evissW --2026-1-9 11:00
 lucasZ --2026-1-12 21:32
 - added basic login functionality
 
-wesleyL --2026-1-12 11:32
+wesleyL --2026-1-12 21:40
 - added html templates and updated app.py
 
-evissW --2026-1-13 11:32
+evissW --2026-1-13 11:00
 - added build_crop functionality
 
-wesleyL --2026-1-13 11:32
+wesleyL --2026-1-13 11:00
 - uploaded design doc
 
-sophiaC --2026-1-13 11:32
+sophiaC --2026-1-13 11:00
 - added launch codes 
 
-sophiaC --2026-1-14 11:32
+sophiaC --2026-1-14 11:00
 - added css to html pages
 
-evissW --2026-1-14 11:18:20
+evissW --2026-1-14 18:20
 - added database functionality, and created logic for game
 
 lucasZ --2026-1-14 18:24
